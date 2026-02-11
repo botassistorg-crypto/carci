@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhaka Wheels - Premium Car Rental</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'Noto Sans Bengali', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#1e3a8a', // dark blue
+                        secondary: '#dc2626', // red
+                        accent: '#fbbf24', // amber
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', 'Noto Sans Bengali', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e3a8a;
+            border-radius: 4px;
+        }
+
+        /* Hover Effects */
+        .car-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.15);
+        }
+        
+        .menu-item {
+            position: relative;
+        }
+        .menu-item::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #fbbf24;
+            transition: width 0.3s ease-in-out;
+        }
+        .menu-item:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Animation */
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up {
+            animation: fade-in-up 0.8s ease-out forwards;
+        }
+
+        /* Page Transitions using Grid Stacking */
+        .transition-wrapper {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            min-height: 80vh; /* Ensure container has height */
+        }
+        
+        .page-transition {
+            grid-column: 1;
+            grid-row: 1;
+            width: 100%;
+            backface-visibility: hidden;
+        }
+
+        /* Slide Right/Left Logic */
+        /* Enter: Slide in from right */
+        .page-enter {
+            opacity: 0;
+            transform: translateX(100%);
+            z-index: 10;
+        }
+        .page-enter-active {
+            opacity: 1;
+            transform: translateX(0);
+            transition: opacity 400ms ease-out, transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        /* Exit: Fade out and slide slightly left */
+        .page-exit {
+            opacity: 1;
+            transform: translateX(0);
+            z-index: 0;
+        }
+        .page-exit-active {
+            opacity: 0;
+            transform: translateX(-20%);
+            transition: opacity 400ms ease-in, transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react-transition-group": "https://esm.sh/react-transition-group@4.4.5"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
